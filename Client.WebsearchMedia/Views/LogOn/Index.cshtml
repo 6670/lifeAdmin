@@ -1,0 +1,98 @@
+﻿@model Client.WebsearchMedia.Models.LogOnModel
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<link href="~/Content/css/style.css" rel="stylesheet"/>
+<style>
+    /*--------------login_section-----------------*/
+
+	.login_Sec{
+		position:fixed;
+		background:#fff;
+		width:100%;
+		height:100%;
+		top:0;
+		left:0;
+		z-index:111;
+		padding:50px 0;
+		overflow:auto;
+		
+	}
+	.child_login{
+		width:500px;
+		margin:0 auto;
+		padding:25px;
+		background: #f9f9f9;
+		border: 1px solid #f3f3f3;
+	}
+	.child_login h3{
+		font-size:26px;
+		font-weight:300;
+		margin: 0;
+		color:#000;
+		padding:0 0 25px 0;
+		text-align:center;
+	}
+	.popup_button{
+		float:right;
+	}
+	.editbutton{
+		padding:10px 20px;
+		background: #e6430b;
+		border:none;
+		color:#fff;
+		font-size:16px;
+		background: -moz-linear-gradient(top, #e6430b 0%, #ff551a 100%);
+		background: -webkit-linear-gradient(top, #e6430b 0%,#ff551a 100%);
+		background: linear-gradient(to bottom, #e6430b 0%,#ff551a 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6430b', endColorstr='#ff551a',GradientType=0 );
+	}
+	.popup_input{
+		border:none;
+		padding:12px 10px;
+		text-align: left;
+		margin: 0 0 5px 0;
+		border-radius:none;
+		font-size: 16px;
+		font-weight: normal;
+		color: #2a2a2a;
+		width: 100%;
+		background-color: #fff;
+		border-bottom:1px solid #e4e4e4;
+	}
+</style>
+<!--Start_login-->
+<div class="login_Sec">
+<div class="child_login">
+    <h3>User Login</h3>
+    <div>
+        <form id="LoginForm" method="post" novalidate style="position:relative;">
+            @*@if (!Model.IsAuthorized)
+            {
+                <div class="form-error alert alert-danger"><strong>Please enter correct email and password !</strong></div>
+            }*@
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="text" class="popup_input" id="Username" data-validation="required" name="Username" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="popup_input" id="Password" name="Password" data-validation="required" placeholder="Password">
+            </div>
+            <div class="popup_button">
+                <button type="submit" class="btn btn-default editbutton" style="color:#fff;">Login</button>
+            </div>
+            <div class="clr"></div>
+        </form>
+    </div>
+</div>
+</div>
+<!--end_login-->
+<script src="@Url.Content("~/content/js/jquery.3.3.1.min.js")"></script>
+<script src="@Url.Content("~/content/js/bootstrap.min.js")"></script>
+
+<script src="@Url.Content("~/content/js/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/content/js/myscript.js")"></script>
+
+

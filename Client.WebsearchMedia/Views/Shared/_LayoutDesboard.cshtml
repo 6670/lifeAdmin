@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Dashboard Template (Sidebar icons animated) - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/content/css/style.css")" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.0/js/responsive.bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="throbber" style="display:none; min-height:120px;"></div>
+    <div id="noty-holder"></div>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://cijulenlinea.ucr.ac.cr/dev-users/">
+                    <img src="http://placehold.it/200x50&text=LOGO" alt="LOGO" ">
+                </a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li>
+                    <a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats">
+                        <i class="fa fa-bar-chart-o"></i>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#UserModel"><i class="fa fa-fw fa-search"></i>Leads<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                        <ul id="UserModel" class="collapse">
+                            <li><a href="@Url.Action("LeadDetailsByDate", "Home")"><i class="fa fa-angle-double-right"></i>Common Lead Details</a></li>
+                          
+                            <li><a href="@Url.Action("LeadTransferDetailsByDate", "Home")"><i class="fa fa-angle-double-right"></i>Transfer Lead Details</a></li>
+
+                            @*<li><a href="@Html.Action("Index", "Home", new { startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7), endDate = DateTime.Now })"><i class="fa fa-angle-double-right"></i>Last 7 days</a></li>
+    <li><a href="@Html.Action("Index", "Home", new { startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 15), endDate = DateTime.Now })"><i class="fa fa-angle-double-right"></i>Last 15 days</a></li>
+    <li><a href="@Html.Action("Index","Home", new { startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month-1, DateTime.Now.Day), endDate =DateTime.Now})"><i class="fa fa-angle-double-right"></i>This Month</a></li>*@
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#CourseModel"><i class="fa fa-fw fa-star"></i>Products<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                        <ul id="CourseModel" class="collapse">
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>All Course</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Add Course</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Update Course</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#SubjectModel"><i class="fa fa-fw fa-star"></i>Buyer<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                        <ul id="SubjectModel" class="collapse">
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>All Subject</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Add Subject</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Update Subject</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#QuestionModel"><i class="fa fa-fw fa-star"></i>Buyer-Products<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                        <ul id="QuestionModel" class="collapse">
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>All Course</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Add Course</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Update Course</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="faq"><i class="fa fa-fw fa fa-question-circle"></i> MENU 5</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <div id="page-wrapper">
+            @*<div class="container">
+                <a class="btn icon-btn btn-default" href="#"><span class="glyphicon btn-glyphicon glyphicon-save img-circle text-muted"></span>Download</a>
+                <a class="btn icon-btn btn-muted" href="#"><span class="glyphicon btn-glyphicon glyphicon-remove-circle img-circle text-muted"></span>Unavailable</a>
+                <a class="btn icon-btn btn-primary" href="#"><span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-primary"></span>Like</a>
+                <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>Add</a>
+                <a class="btn icon-btn btn-info" href="#"><span class="glyphicon btn-glyphicon glyphicon-share img-circle text-info"></span>Share</a>
+                <a class="btn icon-btn btn-warning" href="#"><span class="glyphicon btn-glyphicon glyphicon-minus img-circle text-warning"></span>Remove</a>
+                <a class="btn icon-btn btn-danger" href="#"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>Delete</a>
+            </div>*@
+           @RenderBody()
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    @*<script type="text/javascript">
+        $(function () {
+            $('#example').DataTable( );
+            $('[data-toggle="tooltip"]').tooltip();
+            $(".side-nav .collapse").on("hide.bs.collapse", function () {
+                $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
+            });
+            $('.side-nav .collapse').on("show.bs.collapse", function () {
+                $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");
+            });
+        })
+    </script>*@
+</body>
+</html>
