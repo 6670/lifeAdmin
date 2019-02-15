@@ -9,6 +9,8 @@ namespace UtilityServices
     {
         public const string Life = "Life";
         public const string Funeral = "Funeral";
+        public const string Health = "Health";
+        public const string CorporateHealth = "CorporateHealth";
 
         public const string BuyerVM = "VM";
         public const string BuyerSyneCraft = "SyneCraft";

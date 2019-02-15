@@ -47,7 +47,18 @@ namespace TransferModules.Buyer
                 generatedDateTime = DateTime.Now;
                 serverPost = BuildFuneralURL(cmnLead, prodLead, matchBuyer);
             }
-
+            else if(cmnLead.ProductName.Equals(GlobalConstant.Health))// Health
+            {
+                HealthLead prodLead = UtilityMethods.GetProductLeadByLeadId<HealthLead>(cmnLead.Id, cmnLead.ProductName);
+                generatedDateTime = DateTime.Now;
+                serverPost = BuildHealthURL(cmnLead, prodLead, matchBuyer);
+            }
+            else if (cmnLead.ProductName.Equals(GlobalConstant.CorporateHealth))//Corporate Health
+            {
+                CorporateHealthLead prodLead = UtilityMethods.GetProductLeadByLeadId<CorporateHealthLead>(cmnLead.Id, cmnLead.ProductName);
+                generatedDateTime = DateTime.Now;
+                serverPost = BuildaCorporateHealthURL(cmnLead, prodLead, matchBuyer);
+            }
             if (serverPost != "")
             {
                 tLog = SendResponse(cmnLead.Id, generatedDateTime, serverPost,matchBuyer);
@@ -265,5 +276,67 @@ namespace TransferModules.Buyer
             return queryString;
         }
 
+        private static string BuildaCorporateHealthURL(CommonLead cmnLead, CorporateHealthLead prodLead, MatchBuyer matchBuyer)
+        {
+
+            //Product-Specific Fields
+            var obj = new
+            {
+                affiliate_campaign_id = 340,
+                vmform_hash = "06488",
+                vmform_ip = cmnLead.IpAddress.Trim(),
+                vmform_referer = "https://www.bestmedicalplan.co.uk/gbu/business-medical-plan",
+                vmform_siteid = 1567,
+                vmform_source = "ppcsearch",
+
+                //company_name = prodLead.CompanyName,
+                employees = 20,
+               // current_policy = prodLead.ExistingPolicy ? "yes" : "no",
+
+                first_name = cmnLead.FirstName.Trim(),
+                last_name = cmnLead.LastName.Trim(),
+                gender = cmnLead.Title = "Mr" ?? "Male",
+              //  dob = prodLead.Dob.ToString("dd-MM-yyyy"),
+               // address_line_1 = cmnLead.Address1,
+               // postcode = cmnLead.Postcode,
+
+                telephone = cmnLead.HomePhone.Trim(),
+                //mobile = cmnLead.WorkPhone.Trim(),
+                email = cmnLead.Email.Trim()
+            };
+
+            string queryString = UtilityMethods.GetQueryString(obj);
+            return queryString;
+        }
+
+        internal static string BuildHealthURL(CommonLead cmnLead, HealthLead prodLead,MatchBuyer matchBuyer)
+        {
+
+            //Product-Specific Fields
+            var obj = new
+            {
+                affiliate_campaign_id = 196,
+                vmform_hash = "E78E7",
+                vmform_ip = cmnLead.IpAddress.Trim(),
+                vmform_referer = "https://www.bestmedicalplan.co.uk",
+                vmform_siteid = 1276,
+                vmform_source = "ppcsearch",
+              //  cover_for = GetHealthCover(prodLead.CoverTypeHealth),
+                gender = cmnLead.Title == "Mr" ? "Male" : "Female",
+              //  current_policy = prodLead.ExistingPolicy ? "yes_myself" : "no",
+              //  smoker = prodLead.Smoker ? "Yes" : "No",
+                first_name = cmnLead.FirstName.Trim(),
+                last_name = cmnLead.LastName.Trim(),
+               address_line_1 = cmnLead.Address,
+              //postcode = prodLead.Postcode,
+               // dob = prodLead.Dob.ToString("dd-MM-yyyy"),
+                telephone = cmnLead.HomePhone.Trim(),
+                mobile = cmnLead.WorkPhone.Trim(),
+                email = cmnLead.Email.Trim()
+            };
+
+            string queryString = UtilityMethods.GetQueryString(obj);
+            return queryString;
+        }
     }
 }

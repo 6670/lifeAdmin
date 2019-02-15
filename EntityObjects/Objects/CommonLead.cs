@@ -32,7 +32,8 @@ namespace EntityObjects.Objects
         public ICollection<TransferLog> TransferLogs { get; set; }
         public ICollection<LifeLead> LifeLeads { get; set; }
         public ICollection<FuneralLead> FuneralLeads { get; set; }
+        public ICollection<HealthLead> HealthLeads { get; set; }
 
-
+        public ICollection<CorporateHealthLead> CorporateHealthLeads { get; set; }
     }
 }

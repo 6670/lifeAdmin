@@ -41,5 +41,15 @@ namespace EntityObjects.Objects
         public bool SingleOwnership { get; set; }
         public int CoverPeriod { get; set; }
 
+        //health lead
+        public int CoverTypeId { get; set; }
+        public bool ExistingPolicy { get; set; }
+        public int FamilyNumber { get; set; }
+
+        //Corporate Health
+        public string CompanyName { get; set; }
+        public int EmployeeNumber { get; set; }
+       
+
     }
 }

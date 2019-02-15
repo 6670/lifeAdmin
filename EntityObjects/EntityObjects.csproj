@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enaum\BuyerIntegrationType.cs" />
+    <Compile Include="Enaum\CoverRequiredForEnums.cs" />
     <Compile Include="Enaum\EntityState.cs" />
     <Compile Include="Enaum\LeadType.cs" />
     <Compile Include="Objects\AllFieldCapture.cs" />
@@ -76,6 +77,8 @@
     <Compile Include="Objects\BuyerProduct.cs" />
     <Compile Include="Objects\CommonLead.cs" />
     <Compile Include="Objects\FuneralLead.cs" />
+    <Compile Include="Objects\CorporateHealthLead.cs" />
+    <Compile Include="Objects\HealthLead.cs" />
     <Compile Include="Objects\LifeLead.cs" />
     <Compile Include="Objects\Mortgage.cs" />
     <Compile Include="Objects\ProductMaster.cs" />

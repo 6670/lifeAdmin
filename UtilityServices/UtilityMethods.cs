@@ -27,7 +27,19 @@ namespace UtilityServices
             {
                 return GlobalConstant.Funeral;
 
-              //  return null;
+             
+            }
+            else if (GlobalConstant.Health.Equals(prodName))
+            {
+                return GlobalConstant.Health;
+
+                
+            }
+            else if (GlobalConstant.CorporateHealth.Equals(prodName))
+            {
+                return GlobalConstant.CorporateHealth;
+
+               
             }
             return null;
         }

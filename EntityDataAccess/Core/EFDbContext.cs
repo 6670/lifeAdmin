@@ -27,6 +27,9 @@ namespace EntityDataAccess.Core
         public DbSet<BuyerProduct> BuyerProducts { get; set; }
         public DbSet<TransferLog> TransferLogs { get; set; }
         public DbSet<FuneralLead> FuneralLeads { get; set; }
+        public DbSet<HealthLead> HealthLeads { get; set; }
+
+        public DbSet<CorporateHealthLead> CorporateHealthLeads { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -64,7 +67,26 @@ namespace EntityDataAccess.Core
             modelBuilder.Entity<FuneralLead>().Property(x => x.UpdatedDateTime).IsOptional();
             modelBuilder.Entity<FuneralLead>().Property(x => x.GeneratedDateTime).IsRequired();
 
+            //HealthLeads
 
+            modelBuilder.Entity<HealthLead>().Property(x => x.DOB).IsRequired();
+            modelBuilder.Entity<HealthLead>().Property(x => x.FamilyNumber).IsRequired();
+            modelBuilder.Entity<HealthLead>().Property(x => x.ExistingPolicy).IsRequired();
+            modelBuilder.Entity<HealthLead>().Property(x => x.CoverTypeId).IsRequired();
+            modelBuilder.Entity<HealthLead>().Property(x => x.Smoker).IsRequired();
+            modelBuilder.Entity<HealthLead>().Property(x => x.Age).IsOptional();
+            modelBuilder.Entity<HealthLead>().Property(x => x.UpdatedDateTime).IsOptional();
+            modelBuilder.Entity<HealthLead>().Property(x => x.GeneratedDateTime).IsRequired();
+
+            //HealthLeads
+
+            modelBuilder.Entity<CorporateHealthLead>().Property(x => x.CompanyName).IsRequired();
+            modelBuilder.Entity<CorporateHealthLead>().Property(x => x.EmployeeNumber).IsRequired();
+            modelBuilder.Entity<CorporateHealthLead>().Property(x => x.ExistingPolicy).IsRequired();
+            modelBuilder.Entity<CorporateHealthLead>().Property(x => x.DOB).IsRequired();
+            modelBuilder.Entity<CorporateHealthLead>().Property(x => x.Age).IsOptional();
+            modelBuilder.Entity<CorporateHealthLead>().Property(x => x.UpdatedDateTime).IsOptional();
+            modelBuilder.Entity<CorporateHealthLead>().Property(x => x.GeneratedDateTime).IsRequired();
 
 
             // ProductMaster

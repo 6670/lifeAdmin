@@ -15,6 +15,8 @@ namespace Api.LifeInsuranceDeal.App_Start
             CreateMap<AllFieldCapture, CommonLead>();
             CreateMap<AllFieldCapture, LifeLead>();
             CreateMap<AllFieldCapture, FuneralLead>();
+            CreateMap<AllFieldCapture, HealthLead>();
+            CreateMap<AllFieldCapture, CorporateHealthLead>();
 
         }
 

@@ -30,7 +30,7 @@ namespace Api.LifeInsuranceDeal.Controllers
             var prod = new ProductMaster()
             {
                 GenerateDate = DateTime.Now,
-                Name = "Funeral",
+                Name = "CorporateHealth",
                 State = true,
 
             };
@@ -66,9 +66,10 @@ namespace Api.LifeInsuranceDeal.Controllers
             //     CreatedDateTime = DateTime.Now,
 
             //};
-            // _dbContext.BuyerProducts.Add(buyerProd);
-            //  _dbContext.SaveChanges();
-            var v = _dbContext.BuyerMasters.ToList();
+           // _dbContext.ProductMasters.Add(prod);
+             //_dbContext.SaveChanges();
+            var v = _dbContext.CorporateHealthLeads.ToList();
+            var prods = _dbContext.ProductMasters.ToList();
             // var v = _dbContext.CommonLeads.ToList().OrderByDescending(m=>m.Id).Where(m=>m.ProductName == "Funeral");
             // _dbContext.ProductMasters.Add(prod);
             // _dbContext.BuyerMasters.Add(Buyer);
@@ -86,14 +87,14 @@ namespace Api.LifeInsuranceDeal.Controllers
             //_dbContext.Entry(life).State = EntityState.Modified;
             //_dbContext.SaveChanges();
 
-            var vc = _dbContext.CommonLeads.Where(m => m.Id == 2321).ToList();
+          //  var vc = _dbContext.CommonLeads.Where(m => m.Id == 2321).ToList();
             //  BuyerProduct bPod = _dbContext.BuyerProducts.Where(m => m.Id == 4).FirstOrDefault();
             //  bPod.BuyerApiUrl = "http://leadbee.leadspediatrack.com/post.do";
             //   _dbContext.Entry(bPod).State = EntityState.Modified;
             //  _dbContext.SaveChanges();
 
-            LeadTransfer(2387);
-            return Ok(vc);
+            //LeadTransfer(2387);
+            return Ok(prods);
         }
 
         [HttpPost, Route("capture", Name = "CaptureLead")]
@@ -110,7 +111,7 @@ namespace Api.LifeInsuranceDeal.Controllers
                     cmnLead.Status = EntityObjects.Enaum.LeadType.test;
                 }
                 _dbContext.CommonLeads.Add(cmnLead);
-                _dbContext.SaveChanges();
+               _dbContext.SaveChanges();
                 if (prodName == GlobalConstant.Life)
                 {
 
@@ -124,6 +125,18 @@ namespace Api.LifeInsuranceDeal.Controllers
                     FuneralLead funeralLead = Mapper.Map<FuneralLead>(lead);
                     funeralLead.CommonLeadId = cmnLead.Id;
                     _dbContext.FuneralLeads.Add(funeralLead);
+                }
+                else if(prodName == GlobalConstant.Health)
+                {
+                    HealthLead healthLead = Mapper.Map<HealthLead>(lead);
+                    healthLead.CommonLeadId = cmnLead.Id;
+                    _dbContext.HealthLeads.Add(healthLead);
+                }
+                else if (prodName == GlobalConstant.CorporateHealth)
+                {
+                    CorporateHealthLead corporateHealthLead = Mapper.Map<CorporateHealthLead>(lead);
+                    corporateHealthLead.CommonLeadId = cmnLead.Id;
+                    _dbContext.CorporateHealthLeads.Add(corporateHealthLead);
                 }
                 _dbContext.SaveChanges();
                 if (cmnLead.FirstName.Contains("test"))
