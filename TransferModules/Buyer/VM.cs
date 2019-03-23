@@ -315,21 +315,22 @@ namespace TransferModules.Buyer
             //Product-Specific Fields
             var obj = new
             {
-                affiliate_campaign_id = 196,
-                vmform_hash = "E78E7",
+                affiliate_campaign_id = 419,
+                vmform_hash = "3E008",
                 vmform_ip = cmnLead.IpAddress.Trim(),
-                vmform_referer = "https://www.bestmedicalplan.co.uk",
-                vmform_siteid = 1276,
+                vmform_referer = "https://www.tophealthinsuranceplan.co.uk",
+                vmform_siteid = 1732,
                 vmform_source = "ppcsearch",
-              //  cover_for = GetHealthCover(prodLead.CoverTypeHealth),
+
+                cover_for = GetHealthCover(prodLead.CoverTypeId),
                 gender = cmnLead.Title == "Mr" ? "Male" : "Female",
-              //  current_policy = prodLead.ExistingPolicy ? "yes_myself" : "no",
-              //  smoker = prodLead.Smoker ? "Yes" : "No",
+                current_policy = prodLead.ExistingPolicy ? "yes_myself" : "no",
+                smoker = prodLead.Smoker ? "Yes" : "No",
                 first_name = cmnLead.FirstName.Trim(),
                 last_name = cmnLead.LastName.Trim(),
-               address_line_1 = cmnLead.Address,
-              //postcode = prodLead.Postcode,
-               // dob = prodLead.Dob.ToString("dd-MM-yyyy"),
+                address_line_1 = cmnLead.Address,
+                postcode = cmnLead.PostCode,
+                dob = prodLead.DOB.ToString("dd-MM-yyyy"),
                 telephone = cmnLead.HomePhone.Trim(),
                 mobile = cmnLead.WorkPhone.Trim(),
                 email = cmnLead.Email.Trim()
@@ -338,5 +339,19 @@ namespace TransferModules.Buyer
             string queryString = UtilityMethods.GetQueryString(obj);
             return queryString;
         }
+
+
+        internal static string GetHealthCover(int coverId)
+        {
+            switch (coverId)
+            {
+                case 1: return "Yourself";
+                case 2: return "Yourself and partner";
+                case 3: return "family";
+                default: return "Yourself";
+            }
+        }
+
     }
+
 }

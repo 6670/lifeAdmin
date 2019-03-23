@@ -57,8 +57,12 @@ namespace UtilityServices
                     FuneralLead prodLead = context.FuneralLeads.FirstOrDefault(x => x.CommonLeadId == leadId);
                     return (T)Convert.ChangeType(prodLead, typeof(T));
                 }
+                else if (parentProductName.Equals(GlobalConstant.Health))
+                {
+                    HealthLead prodLead = context.HealthLeads.FirstOrDefault(x => x.CommonLeadId == leadId);
+                    return (T)Convert.ChangeType(prodLead, typeof(T));
+                }
 
-                
                 //should add other product
                 return (T)Convert.ChangeType(null, typeof(T));
             }

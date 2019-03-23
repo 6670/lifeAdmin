@@ -47,11 +47,11 @@ namespace Api.LifeInsuranceDeal.Controllers
             };
             var buyerProd = new BuyerProduct()
             {
-                BuyerApiUrl = "https://secure.traffic-clearing-house.com/Leadsdb/direct_api/tch_xmlhttp.php",
-                BuyerMasterId = 2,
+                BuyerApiUrl = "https://vmleads.co.uk/integrations/rest?is_test=1",
+                BuyerMasterId = 1,
                 EndDate = DateTime.Now.AddDays(25),
                 IntegrationType = EntityObjects.Enaum.BuyerIntegrationType.xml,
-                ProductMasterId = 1,
+                ProductMasterId = 3,
                 Piority = 1,
                 Quata = 100,
                 StartDate = DateTime.Now,
@@ -66,15 +66,16 @@ namespace Api.LifeInsuranceDeal.Controllers
             //     CreatedDateTime = DateTime.Now,
 
             //};
-           // _dbContext.ProductMasters.Add(prod);
-             //_dbContext.SaveChanges();
-            var v = _dbContext.CorporateHealthLeads.ToList();
-            var prods = _dbContext.ProductMasters.ToList();
+           //_dbContext.ProductMasters.Add(prod);
+           //  _dbContext.SaveChanges();
+            var v = _dbContext.ProductMasters.ToList();
+            var prods = _dbContext.BuyerMasters.ToList();
+            var prodBuyer = _dbContext.BuyerProducts.ToList();
             // var v = _dbContext.CommonLeads.ToList().OrderByDescending(m=>m.Id).Where(m=>m.ProductName == "Funeral");
             // _dbContext.ProductMasters.Add(prod);
             // _dbContext.BuyerMasters.Add(Buyer);
-            //  _dbContext.BuyerProducts.Add(buyerProd);
-            //   _dbContext.SaveChanges();
+            // _dbContext.BuyerProducts.Add(buyerProd);
+             // _dbContext.SaveChanges();
 
             // CommonLead cmn = UtilityMethods.GetCommonLeads(1276);
             // cmn.Email = "rsurry@rjminternationall.co";
@@ -87,7 +88,7 @@ namespace Api.LifeInsuranceDeal.Controllers
             //_dbContext.Entry(life).State = EntityState.Modified;
             //_dbContext.SaveChanges();
 
-          //  var vc = _dbContext.CommonLeads.Where(m => m.Id == 2321).ToList();
+            //  var vc = _dbContext.CommonLeads.Where(m => m.Id == 2321).ToList();
             //  BuyerProduct bPod = _dbContext.BuyerProducts.Where(m => m.Id == 4).FirstOrDefault();
             //  bPod.BuyerApiUrl = "http://leadbee.leadspediatrack.com/post.do";
             //   _dbContext.Entry(bPod).State = EntityState.Modified;

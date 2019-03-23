@@ -180,7 +180,7 @@ namespace Client.WebsearchMedia.Controllers
             cmnLead.Title = cmn.Title;
             cmnLead.Email = cmn.Email;
             cmnLead.HomePhone = cmn.HomePhone;
-            cmnLead.HomePhone = cmn.WorkPhone;
+            cmnLead.WorkPhone = cmn.WorkPhone;
             cmnLead.City = cmn.City ?? string.Empty;
             cmnLead.Address = cmn.Address;
             cmnLead.UpdatedDateTime = DateTime.Now;
